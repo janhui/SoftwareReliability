@@ -9,12 +9,14 @@ public class SeatReservationManager {
                                        [numberToIndex(Seat.MAX_NUMBER) + 1];
     }
 
-    public boolean isReserved(Seat s) {
+    //@ requires seatReservations != null
+    public boolean isReserved(/*@ non_null @*/ Seat s) {
         return seatReservations[rowToIndex(s.getRow())]
                                [numberToIndex(s.getNumber())] != null;
     }
 
-    public void reserve(Seat s, Customer c) 
+    //@ requires seatReservations != null
+    public void reserve(/*@ non_null @*/ Seat s, Customer c) 
             throws ReservationException {
         if(isReserved(s)) {
             throw new ReservationException();
@@ -23,7 +25,8 @@ public class SeatReservationManager {
                         [numberToIndex(s.getNumber())] = c;
     }
     
-    public void unreserve(Seat s)
+    //@ requires seatReservations != null
+    public void unreserve(/*@ non_null @*/ Seat s)
             throws ReservationException {
         if(!isReserved(s)) {
             throw new ReservationException();
@@ -32,6 +35,7 @@ public class SeatReservationManager {
                         [numberToIndex(s.getNumber())] = null;
     }
 
+    //@ requires seatReservations != null
     public void reserveNextFree(Customer c) throws ReservationException {
         for(int rowIndex = 0; rowIndex < seatReservations.length; rowIndex++) {
             for(int numberIndex = 0; 
