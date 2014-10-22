@@ -85,9 +85,9 @@ public class SeatReservationManager {
     }
 
     /*@ 
-      requires row >= Seat.MIN_ROW 
+      requires row >= Seat.MIN_ROW;
       requires row <= Seat.MAX_ROW;
-      ensures \result >= 0 ;
+      ensures \result >= 0;
       ensures \result <= Seat.MAX_ROW - Seat.MIN_ROW;
     @*/
     private static int rowToIndex(char row) {
@@ -105,7 +105,7 @@ public class SeatReservationManager {
     }
     
     /*@ 
-      requires index >= 0 
+      requires index >= 0;
       requires index <= Seat.MAX_ROW - Seat.MIN_ROW;
       ensures \result >= Seat.MIN_ROW; 
       ensures \result <= Seat.MAX_ROW;
