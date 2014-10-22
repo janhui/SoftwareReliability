@@ -84,18 +84,42 @@ public class SeatReservationManager {
         return result;
     }
 
+    /*@ 
+      requires row >= Seat.MIN_ROW 
+      requires row <= Seat.MAX_ROW;
+      ensures \result >= 0 ;
+      ensures \result <= Seat.MAX_ROW - Seat.MIN_ROW;
+    @*/
     private static int rowToIndex(char row) {
         return row - Seat.MIN_ROW;
     }
 
+    /*@ 
+      requires number >= Seat.MIN_NUMBER;
+      requires number <= Seat.MAX_NUMBER;
+      ensures \result >= 0;
+      ensures \result <= Seat.MAX_NUMBER - Seat.MIN_NUMBER;
+    @*/
     private static int numberToIndex(int number) {
         return number - Seat.MIN_NUMBER;
     }
     
+    /*@ 
+      requires index >= 0 
+      requires index <= Seat.MAX_ROW - Seat.MIN_ROW;
+      ensures \result >= Seat.MIN_ROW; 
+      ensures \result <= Seat.MAX_ROW;
+    @*/
     private static char indexToRow(int index) {
         return (char)(Seat.MIN_ROW + index);
     }
 
+    /*@ 
+      requires index >= 0;
+      requires index <= Seat.MAX_NUMBER - Seat.MIN_NUMBER;
+      ensures \result >= Seat.MIN_NUMBER;
+      ensures \result <= Seat.MAX_NUMBER;
+    @*/
     private static int indexToNumber(int index) {
         return index + Seat.MIN_NUMBER;
     }
