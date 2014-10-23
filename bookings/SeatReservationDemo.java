@@ -10,6 +10,7 @@ public class SeatReservationDemo {
         manager.reserve(new Seat('D', 4), new Customer());
         manager.reserve(new Seat('B', 19), new Customer());
         manager.reserve(new Seat('F', 17), new Customer());
+        manager.reserve(new Seat('G', 20), new Customer());
             
     }
     
