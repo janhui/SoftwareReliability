@@ -4,7 +4,10 @@ public class SeatReservationManager {
 
     //@ invariant seatReservations != null;
     //@ invariant (\forall int x; 0 <= x && x < seatReservations.length ==> seatReservations[x] != null);
-
+    
+    //@ invariant seatReservations.length == (Seat.MAX_ROW - Seat.MIN_ROW) + 1;
+    //@ invariant (\forall int x; 0 <= x && x < seatReservations.length ==> seatReservations[x].length  == (Seat.MAX_NUMBER - Seat.MIN_NUMBER + 1));
+    
     private final Customer[][] seatReservations;
     
     public SeatReservationManager() {
